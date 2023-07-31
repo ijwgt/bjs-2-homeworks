@@ -3,9 +3,9 @@
 function solveEquation(a, b, c) {
   let arr = [];
   let D = Math.pow(b, 2) - 4 * a * c;
-  
+
   if (D < 0) {
-	arr.push();
+	D = false;
   } else if (D === 0) {
 	D = -b / (2 * a);
 	arr.push(D);
@@ -19,6 +19,11 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  
+	let monthlyInterestRate = percent / 100 / 12;
+	let loanBody = amount - contribution;
+	let monthlyLoanPayment = loanBody * (monthlyInterestRate + (monthlyInterestRate / (((1 + monthlyInterestRate) ** countMonths) - 1)));
+	let result = +(monthlyLoanPayment * countMonths).toFixed(2);
+
+	return result;
 }
 
