@@ -4,12 +4,19 @@ function getArrayParams(...arr) {
 	let sum = 0;
 	let avg = 0;
 
-	for (i = 0; i < arr.length; i += 1) {
-		min = Math.min(min, arr[i]);
-		max = Math.max(max, arr[i]);
-		sum += arr[i];
-	}
-	avg = +(sum/arr.length).toFixed(2);
+	min = Math.min(min, ...arr);
+	max = Math.max(max, ...arr);
+	sum = arr.reduce(function (currentSum, currentNumber) {
+		return currentSum + currentNumber
+	});
+	avg = +(sum / arr.length).toFixed(2);
+	
+	// for (i = 0; i < arr.length; i += 1) {
+ 	//    if (arr[i] < min) {min = arr[i]}; 
+ 	//    if (arr[i] > max) {max = arr[i]};
+	//    sum += arr[i];
+	// }
+	// avg = +(sum / arr.length).toFixed(2);
 
 	return { min: min, max: max, avg: avg };
 }
