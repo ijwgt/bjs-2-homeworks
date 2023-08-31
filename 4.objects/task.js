@@ -25,7 +25,11 @@ Student.prototype.getAverage = function () {
 	
 	const average = this.marks.reduce((acc, mark, index, arr) => {
 		acc += mark;
-		acc / arr.length;
+
+		if (index === arr.length - 1) {
+			return acc / arr.length;
+		}
+		
 		return acc;
 	}, 0)
 }
