@@ -1,19 +1,37 @@
 function Student(name, gender, age) {
-  
+	this.name = name;
+	this.gender = gender;
+	this.age = age;
+	this.marks = [];
 }
 
+new Student("John", "male", 20);
+new Student("Roman", "male", 34);
+
 Student.prototype.setSubject = function (subjectName) {
-  
+	this.subject = subjectName;
 }
 
 Student.prototype.addMarks = function (...marks) {
-  
+	if (this.hasOwnProperty('marks') === true) {
+		this.marks.push(...marks);
+	}
 }
 
 Student.prototype.getAverage = function () {
-  
+	if (this.hasOwnProperty('marks') === false) {
+		return 0;
+	}
+	
+	const average = this.marks.reduce((acc, mark, index, arr) => {
+		acc += mark;
+		acc / arr.length;
+		return acc;
+	}, 0)
 }
 
 Student.prototype.exclude = function (reason) {
-  
+	delete this.subject;
+	delete this.student;
+	this.excluded = reason;
 }
