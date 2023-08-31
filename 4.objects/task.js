@@ -29,9 +29,11 @@ Student.prototype.getAverage = function () {
 		if (index === arr.length - 1) {
 			return acc / arr.length;
 		}
-		
+
 		return acc;
 	}, 0)
+
+	return average;
 }
 
 Student.prototype.exclude = function (reason) {
