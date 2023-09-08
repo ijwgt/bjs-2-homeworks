@@ -3,9 +3,8 @@
 
 	if (Number.isNaN(num)) {
 		throw new Error ("Невалидное значение");
-	} else {
+	} 
 		return num;
-	}
 }
 
 function validateCount(value) {
@@ -35,7 +34,7 @@ class Triangle {
 
 	get area() {
 		const p = (this.a + this.b + this.c) / 2;
-		const S = (Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c))).toFixed(3);
+		const S = Number((Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c))).toFixed(3));
 		return S;
 	}
 }
