@@ -4,15 +4,13 @@
 	if (isNaN(num)) {
 		throw new Error ("Невалидное значение");
 	} 
-	
+
 	return num;
 }
 
 function validateCount(value) {
-	const num = parseCount(value)
-
-	try{
-		return num;
+	try {
+		return parseCount(value);
 	} catch (error) {
 		return error;
 	}
