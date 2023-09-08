@@ -65,36 +65,33 @@ class PrintEditionItem {
   
   class Library {
 	constructor(name) {
-	  this.name = name;
-	  this.books = [];
+		this.name = name;
+		this.books = [];
 	}
 	
 	addBook(book) {
-	  if (book.state > 30) {
-		this.books.push(book);
-	  }
+		if (book.state > 30) {
+			this.books.push(book);
+		}
 	}
   
 	findBookBy(type, value) {
-	  let findBook = this.books.find(book => book[type] === value);
-	  
-	  if (typeof findBook === 'object') {
-		return findBook;
-	  } else {
-		  return null;
+		let findBook = this.books.find(book => book[type] === value);
+	
+		if (typeof findBook === 'object') {
+			return findBook;
+		} else {
+			return null;
 		}
-	  }
-  
-	  giveBookByName(bookName) {
-		  let giveBook = this.books.find(book => 
-			book.name === bookName);
-		
-		  if (typeof giveBook === "object") {
-			let index = this.books.indexOf(giveBook);
-			this.books.splice(index, 1);
-			return giveBook;
-		  } else {
-			  return null;
-			}
-	  }
-  }
+	}
+
+	giveBookByName(bookName) {
+		const book = this.findBookBy("name", bookName);
+
+		if (!book) {
+			return null;
+		}
+		this.books = this.books.filter((item) => item.name !== bookName);
+			return book;
+	}
+}
