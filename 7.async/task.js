@@ -18,7 +18,7 @@ class AlarmClock {
 	}
 
 	getCurrentFormattedTime() {
-		new Date().toLocaleTimeString().slice(0, 5);
+		return new Date().toLocaleTimeString().slice(0, -3);
 	}
 
 	start() {
